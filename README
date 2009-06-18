@@ -1,0 +1,24 @@
+HasManyThroughHabtm
+===================
+
+This plugin allows you to have has_many :through associations with a habtm source.
+
+
+Example
+=======
+
+  class Student < ActiveRecord::Base
+	belongs_to :school
+    has_and_belongs_to_many :books
+  end
+
+  class Book < ActiveRecord::Base
+	has_and_belongs_to_many :students
+  end
+
+  class School < ActiveRecord::Base
+    has_many :students
+    has_many :books, :through => :students, :uniq => true
+  end
+
+Copyright (c) 2009 Jan De Poorter, released under the MIT license
