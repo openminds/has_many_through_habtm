@@ -44,8 +44,8 @@ module HasManyThroughHabtm
         ]
       elsif @reflection.through_reflection.macro == :has_and_belongs_to_many
         construct_joins_without_habtm(custom_joins) + " INNER JOIN %s ON %s.%s = %s.%s" % [
-          @reflection.through_reflection.options[:join_table].inspect,
-          @reflection.through_reflection.options[:join_table].inspect, @reflection.through_reflection.association_foreign_key,
+          @reflection.through_reflection.options[:join_table],
+          @reflection.through_reflection.options[:join_table], @reflection.through_reflection.association_foreign_key,
           @reflection.through_reflection.quoted_table_name, @reflection.through_reflection.klass.primary_key
         ]
       else
